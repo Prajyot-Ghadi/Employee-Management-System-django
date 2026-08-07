@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Employee Directory</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <h2>Employee Records - {{ employee.full_name}}</h2>
+    <img src="{{employee.image.url}}" alt="{{ employee.first_name }} Image" width="200">
+    <p>Email : {{ employee.email }}</p>
+    <p>Designation : {{ employee.designation }}</p>
+
+</body>
+</html>

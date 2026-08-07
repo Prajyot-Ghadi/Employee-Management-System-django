@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-1z!%rwx=gi7!y@hy&^z6)bg9(7rewm9=q890kw4xacqh)ta20-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -122,3 +122,5 @@ STATICFILES_DIRS = ['employee_main/static']   #we're telling django to look into
 
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR/'media'
