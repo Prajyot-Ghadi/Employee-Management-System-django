@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Employee
 from .forms import EmployeeForm
 
@@ -27,6 +27,7 @@ def add_employee(request):
         form = EmployeeForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
+            return redirect('home')
 
         else:
             print(form.errors)
@@ -49,8 +50,11 @@ def update_employee(request, id):
 
         if form.is_valid():
             form.save()
+            return redirect('home')
+            
         else:
             print(form.errors)
+    
 
     else:
         form = EmployeeForm(instance=employee)
@@ -61,3 +65,11 @@ def update_employee(request, id):
                 
             }
     return render(request, 'update_employee.html', context)
+
+
+def delete_employee(request, id):
+    employee = get_object_or_404(Employee, id=id)
+
+    employee.delete()
+
+    return redirect('home')
