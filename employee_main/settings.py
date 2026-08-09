@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'employees',
+    'accounts',
+    'crispy_forms',
+    "crispy_bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -124,3 +127,6 @@ STATICFILES_DIRS = ['employee_main/static']   #we're telling django to look into
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/'media'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
