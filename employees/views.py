@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Employee
 from .forms import EmployeeForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -10,6 +11,7 @@ from .forms import EmployeeForm
 #create the view
 #create the template
 
+@login_required
 def employee_detail(request,id):
 
     employee = get_object_or_404(Employee, id=id)
@@ -21,7 +23,7 @@ def employee_detail(request,id):
     return render(request, 'employee_detail.html', context)
 
 
-
+@login_required
 def add_employee(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST, request.FILES)
@@ -40,7 +42,7 @@ def add_employee(request):
     return render(request, 'add_employee.html', context)
 
 
-
+@login_required
 def update_employee(request, id):
 
     employee = get_object_or_404(Employee, id = id)
@@ -66,7 +68,7 @@ def update_employee(request, id):
             }
     return render(request, 'update_employee.html', context)
 
-
+@login_required
 def delete_employee(request, id):
     employee = get_object_or_404(Employee, id=id)
 

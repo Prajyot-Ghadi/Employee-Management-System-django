@@ -22,6 +22,10 @@ def register(request):
 
 
 def login(request):
+    if request.user.is_authenticated:
+        print("The user is already logged in")
+        return redirect('home')
+    
     if request.method =='POST':
         form  = AuthenticationForm(request, request.POST)
 
@@ -41,3 +45,6 @@ def login(request):
 
 
 
+def logout(request):
+    auth.logout(request)
+    return redirect('home')
