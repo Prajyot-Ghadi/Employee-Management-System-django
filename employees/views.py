@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Employee
 from .forms import EmployeeForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
@@ -24,6 +24,7 @@ def employee_detail(request,id):
 
 
 @login_required
+@permission_required('employees.add_employee', raise_exception=True)
 def add_employee(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST, request.FILES)
@@ -42,7 +43,9 @@ def add_employee(request):
     return render(request, 'add_employee.html', context)
 
 
+
 @login_required
+@permission_required('employees.update_employee', raise_exception=True)
 def update_employee(request, id):
 
     employee = get_object_or_404(Employee, id = id)

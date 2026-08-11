@@ -20,7 +20,10 @@
     {% endif %}
     
     <h2>Employee Records - Tech with Prajyot</h2>
+    <!-- if there is no permission to the user , don't show this button -->
+     {% if perms.employees.add_employee %}
     <a href="{% url 'add_employee' %}" style="float: right; margin-right: 200px;">Add Employee</a>
+    {% endif %}
     <br><br>
     <table>
         <thead>
